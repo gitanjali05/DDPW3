@@ -1,0 +1,23 @@
+---
+title: "plotly"
+author: "git"
+date: "23/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We use the 'mtcars' dataset and understand the relation between various factors and weight('wt'). Graph is plotted between mileage('mpg') and weight('wt'), and the number of cylinders are being visualised.
+
+```{r plot, echo=FALSE}
+
+library(plotly)
+plot_ly(data = mtcars, x = ~mpg, y = ~wt, 
+        color = ~as.factor(cyl), size = ~hp,
+        text = ~paste("Weight: ", wt, '<br>MPG:', mpg),
+        type = "scatter", mode = "markers") %>%
+  layout(title = "CAR DATA")
+
+```
